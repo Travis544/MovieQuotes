@@ -52,6 +52,7 @@
                                 <connections>
                                     <outlet property="movieLabel" destination="FXV-1g-uis" id="9WA-N5-szM"/>
                                     <outlet property="quoteLabel" destination="ESf-BG-LTB" id="6uu-NC-HVp"/>
+                                    <segue destination="VXx-k9-WnZ" kind="show" identifier="myMovieQuoteDetailSegway" id="mLo-1a-wMb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -82,25 +83,69 @@
             </objects>
             <point key="canvasLocation" x="-1319" y="106"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Detail View Controller-->
+        <scene sceneID="mC1-rk-ysO">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MovieQuotes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="VXx-k9-WnZ" customClass="DetailViewController" customModule="MovieQuotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vcc-tD-nHg" customClass="DetailView" customModule="MovieQuotes">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Gi6-Dr-yN1">
+                                <rect key="frame" x="20" y="128" width="374" height="172"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea3-Ih-zgO">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uuz-am-8NB">
+                                        <rect key="frame" x="0.0" y="50.5" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3CL-d8-m8M">
+                                        <rect key="frame" x="0.0" y="101" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bv-E6-mjy">
+                                        <rect key="frame" x="0.0" y="151.5" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ol4-GI-6PR"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <constraints>
+                            <constraint firstItem="Gi6-Dr-yN1" firstAttribute="leading" secondItem="ol4-GI-6PR" secondAttribute="leading" constant="20" id="5B7-2R-R7Y"/>
+                            <constraint firstItem="Gi6-Dr-yN1" firstAttribute="top" secondItem="ol4-GI-6PR" secondAttribute="top" constant="40" id="XZS-bs-dmm"/>
+                            <constraint firstItem="ol4-GI-6PR" firstAttribute="trailing" secondItem="Gi6-Dr-yN1" secondAttribute="trailing" constant="20" id="lFb-ju-Ldg"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="EKN-5q-ye4"/>
+                    <connections>
+                        <outlet property="movieLabel" destination="4bv-E6-mjy" id="Qyt-kZ-ddt"/>
+                        <outlet property="quoteLabel" destination="Uuz-am-8NB" id="lHL-Qf-Y21"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="saJ-xQ-0oZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="135"/>
+            <point key="canvasLocation" x="271" y="120"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

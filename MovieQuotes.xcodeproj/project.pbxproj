@@ -17,6 +17,7 @@
 		1FB566BD27F1DD8B0075E752 /* MovieQuotesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB566BC27F1DD8B0075E752 /* MovieQuotesUITestsLaunchTests.swift */; };
 		1FB566CA27F1E0000075E752 /* MovieQuotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB566C927F1E0000075E752 /* MovieQuotesTableViewController.swift */; };
 		1FB566CC27F1E5940075E752 /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB566CB27F1E5940075E752 /* MovieQuote.swift */; };
+		1FB566CE27F334330075E752 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB566CD27F334330075E752 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		1FB566BC27F1DD8B0075E752 /* MovieQuotesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuotesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1FB566C927F1E0000075E752 /* MovieQuotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuotesTableViewController.swift; sourceTree = "<group>"; };
 		1FB566CB27F1E5940075E752 /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
+		1FB566CD27F334330075E752 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				1FB566A227F1DD8A0075E752 /* Assets.xcassets */,
 				1FB566A427F1DD8A0075E752 /* LaunchScreen.storyboard */,
 				1FB566A727F1DD8A0075E752 /* Info.plist */,
+				1FB566CD27F334330075E752 /* DetailViewController.swift */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			files = (
 				1FB5669A27F1DD890075E752 /* AppDelegate.swift in Sources */,
 				1FB566CC27F1E5940075E752 /* MovieQuote.swift in Sources */,
+				1FB566CE27F334330075E752 /* DetailViewController.swift in Sources */,
 				1FB566CA27F1E0000075E752 /* MovieQuotesTableViewController.swift in Sources */,
 				1FB5669C27F1DD890075E752 /* SceneDelegate.swift in Sources */,
 			);

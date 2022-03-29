@@ -15,8 +15,18 @@ class MovieQuoteTableViewCell : UITableViewCell{
 
 class MovieQuotesTableViewController: UITableViewController {
     let kMovieQuoteCell="MovieQuoteCell"
+    let kMovieQuoteSegue = "myMovieQuoteDetailSegway"
     let names=["Travis", "Dave", "JOHN", "s", "TE", "ll"]
     var movieQuotes : [MovieQuote] = [MovieQuote]()
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+    }
     
     
     override func viewDidLoad() {
@@ -26,7 +36,9 @@ class MovieQuotesTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        
         self.navigationItem.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddQuoteDialog) )
 //        hard code some movie quote
         let mq1=MovieQuote(quote: "I will be back", movie: "Terminator")
@@ -39,6 +51,14 @@ class MovieQuotesTableViewController: UITableViewController {
         print("You pressed addd button")
         let alertController = UIAlertController(title: "Create a new movie quotes", message:"", preferredStyle: UIAlertController.Style.alert)
         
+        alertController.addTextField { textField in
+            textField.placeholder="Quote"
+        }
+        
+        alertController.addTextField { textField in
+            textField.placeholder="Movie"
+        }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { action in
             print("Cancled")
         }
@@ -46,6 +66,14 @@ class MovieQuotesTableViewController: UITableViewController {
         let createQuoteAction = UIAlertAction(title: "Create Quote", style: UIAlertAction.Style.default){
             action in
             print("you created a movie quote!")
+            
+            let quoteTextField=alertController.textFields![0] as UITextField
+            let movieTextField=alertController.textFields![1] as UITextField
+            let s = MovieQuote(quote:quoteTextField.text!, movie: movieTextField.text!)
+            self.movieQuotes.insert(s,at:0)
+            self.tableView.reloadData()
+            print(self.movieQuotes)
+            
         }
         alertController.addAction(cancelAction)
         alertController.addAction(createQuoteAction)
@@ -78,25 +106,28 @@ class MovieQuotesTableViewController: UITableViewController {
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
+    
+//     Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+//         Return false if you do not want the specified item to be editable.
+      
         return true
     }
-    */
+    
 
-    /*
-    // Override to support editing the table view.
+    
+//     Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+//             Delete the row from the data source
+            movieQuotes.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
         } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//             Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -113,14 +144,21 @@ class MovieQuotesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//         Get the new view controller using segue.destination.
+//         Pass the selected object to the new view controller.
+        if segue.identifier==kMovieQuoteSegue {
+            let mqdvc=segue.destination as! DetailViewController
+            if let indexPath = tableView.indexPathForSelectedRow{
+                mqdvc.movieQuote=movieQuotes[indexPath.row]
+            }
+        }
+        
     }
-    */
+
 
 }
