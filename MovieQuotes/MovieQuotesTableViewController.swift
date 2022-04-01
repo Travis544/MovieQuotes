@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 class MovieQuoteTableViewCell : UITableViewCell{
     
     @IBOutlet weak var movieLabel: UILabel!
@@ -17,6 +19,8 @@ class MovieQuotesTableViewController: UITableViewController {
     let kMovieQuoteCell="MovieQuoteCell"
     let kMovieQuoteSegue = "myMovieQuoteDetailSegway"
     let names=["Travis", "Dave", "JOHN", "s", "TE", "ll"]
+    var movieQuoteRef : CollectionReference!
+    var quoteListener : ListenerRegistration!
     var movieQuotes : [MovieQuote] = [MovieQuote]()
     
     
@@ -25,9 +29,26 @@ class MovieQuotesTableViewController: UITableViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        
+        quoteListener.remove()
     }
     
+    override func viewWillAppear(_ animated:Bool){
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        quoteListener=movieQuoteRef.order(by: "created", descending:true).limit(to: 50).addSnapshotListener{ [self](querySnapshot, error) in
+            self.movieQuotes=[]
+            if querySnapshot != nil{
+                querySnapshot?.documents.forEach({ QueryDocumentSnapshot in
+                    print(QueryDocumentSnapshot.documentID)
+                    print(QueryDocumentSnapshot.data())
+                    let data=QueryDocumentSnapshot.data()
+                    self.movieQuotes.append(MovieQuote(id:QueryDocumentSnapshot.documentID, quote: data["quote"] as! String, movie: data["movie"] as! String ))
+                    
+                })
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +62,12 @@ class MovieQuotesTableViewController: UITableViewController {
         
         self.navigationItem.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddQuoteDialog) )
 //        hard code some movie quote
-        let mq1=MovieQuote(quote: "I will be back", movie: "Terminator")
-        let mq2=MovieQuote(quote: "Everything is great", movie: "Lego Movie")
-        movieQuotes.append(mq1)
-        movieQuotes.append(mq2)
+        // let mq1=MovieQuote(quote: "I will be back", movie: "Terminator")
+//        let mq2=MovieQuote(quote: "Everything is great", movie: "Lego Movie")
+//        movieQuotes.append(mq1)
+//        movieQuotes.append(mq2)
+        movieQuoteRef = Firestore.firestore().collection("MovieQuotes")
+        
     }
     
     @objc func showAddQuoteDialog(){
@@ -69,11 +92,12 @@ class MovieQuotesTableViewController: UITableViewController {
             
             let quoteTextField=alertController.textFields![0] as UITextField
             let movieTextField=alertController.textFields![1] as UITextField
-            let s = MovieQuote(quote:quoteTextField.text!, movie: movieTextField.text!)
-            self.movieQuotes.insert(s,at:0)
-            self.tableView.reloadData()
-            print(self.movieQuotes)
-            
+//            let s = MovieQuote(quote:quoteTextField.text!, movie: movieTextField.text!)
+            self.movieQuoteRef.addDocument(data: ["quote":quoteTextField.text!, "movie":movieTextField.text!, "created":Timestamp.init()])
+//            self.movieQuotes.insert(s,at:0)
+//            self.tableView.reloadData()
+//            print(self.movieQuotes)
+//
         }
         alertController.addAction(cancelAction)
         alertController.addAction(createQuoteAction)
@@ -120,7 +144,9 @@ class MovieQuotesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
 //             Delete the row from the data source
-            movieQuotes.remove(at: indexPath.row)
+//            movieQuotes.remove(at: indexPath.row)
+            let movieQuoteToDelete=movieQuotes[indexPath.row]
+            movieQuoteRef.document(movieQuoteToDelete.id!).delete()
 //            tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
         } else if editingStyle == .insert {
