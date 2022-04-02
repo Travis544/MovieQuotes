@@ -23,7 +23,7 @@ class MovieQuotesTableViewController: UITableViewController {
     var quoteListener : ListenerRegistration!
     var movieQuotes : [MovieQuote] = [MovieQuote]()
     
-    
+
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
     }
@@ -180,7 +180,8 @@ class MovieQuotesTableViewController: UITableViewController {
         if segue.identifier==kMovieQuoteSegue {
             let mqdvc=segue.destination as! DetailViewController
             if let indexPath = tableView.indexPathForSelectedRow{
-                mqdvc.movieQuote=movieQuotes[indexPath.row]
+//                mqdvc.movieQuote=movieQuotes[indexPath.row]
+                mqdvc.movieQuoteRef=movieQuoteRef.document(movieQuotes[indexPath.row].id!)
             }
         }
         
