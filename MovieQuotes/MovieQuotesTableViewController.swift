@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import FirebaseFirestore
 class MovieQuoteTableViewCell : UITableViewCell{
     
     @IBOutlet weak var movieLabel: UILabel!
@@ -33,8 +32,19 @@ class MovieQuotesTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated:Bool){
+        
+        
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        
+        if (AuthManager.shared.isSignedIn){
+            print("User is already signed in")
+        }else{
+            print("No user so signing in anonymously")
+            AuthManager.shared.signInAnonymously()
+        }
+//
+        
+//        tableView.reloadData()
         quoteListener=movieQuoteRef.order(by: "created", descending:true).limit(to: 50).addSnapshotListener{ [self](querySnapshot, error) in
             self.movieQuotes=[]
             if querySnapshot != nil{
@@ -42,7 +52,9 @@ class MovieQuotesTableViewController: UITableViewController {
                     print(QueryDocumentSnapshot.documentID)
                     print(QueryDocumentSnapshot.data())
                     let data=QueryDocumentSnapshot.data()
-                    self.movieQuotes.append(MovieQuote(id:QueryDocumentSnapshot.documentID, quote: data["quote"] as! String, movie: data["movie"] as! String ))
+                    
+                    self.movieQuotes.append(MovieQuote(id:QueryDocumentSnapshot.documentID, quote: data["quote"] as! String, movie: data["movie"] as! String,
+                                                       author: AuthManager.shared.currentUser!.uid))
                     
                 })
                 self.tableView.reloadData()
@@ -57,9 +69,9 @@ class MovieQuotesTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+       self.navigationItem.leftBarButtonItem = self.editButtonItem
         
-        
+//        self.navigationItem.rightBarButtonItem
         self.navigationItem.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddQuoteDialog) )
 //        hard code some movie quote
         // let mq1=MovieQuote(quote: "I will be back", movie: "Terminator")
@@ -93,7 +105,12 @@ class MovieQuotesTableViewController: UITableViewController {
             let quoteTextField=alertController.textFields![0] as UITextField
             let movieTextField=alertController.textFields![1] as UITextField
 //            let s = MovieQuote(quote:quoteTextField.text!, movie: movieTextField.text!)
-            self.movieQuoteRef.addDocument(data: ["quote":quoteTextField.text!, "movie":movieTextField.text!, "created":Timestamp.init()])
+            self.movieQuoteRef.addDocument(data: ["quote":quoteTextField.text!, "movie":movieTextField.text!, "created":Timestamp.init(),
+                                                  "author": AuthManager.shared.currentUser!.uid
+                                                  
+                                                 ]
+            
+            )
 //            self.movieQuotes.insert(s,at:0)
 //            self.tableView.reloadData()
 //            print(self.movieQuotes)
@@ -134,8 +151,8 @@ class MovieQuotesTableViewController: UITableViewController {
 //     Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 //         Return false if you do not want the specified item to be editable.
-      
-        return true
+        let movieQuote=self.movieQuotes[indexPath.row]
+        return AuthManager.shared.currentUser!.uid==movieQuote.author
     }
     
 

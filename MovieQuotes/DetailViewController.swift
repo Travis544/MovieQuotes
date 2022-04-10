@@ -16,7 +16,7 @@ class DetailViewController: UIViewController {
     var movieQuoteListener: ListenerRegistration!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showEditQuoteDialog) )
+    
         // Do any additional setup after loading the view.
 //        updateView()
     }
@@ -37,7 +37,17 @@ class DetailViewController: UIViewController {
             
             let data=documentSnapshot
             print("SSSS")
-            self.movieQuote = MovieQuote(id:data!.documentID, quote: data!["quote"] as! String, movie: data!["movie"] as! String )
+            self.movieQuote = MovieQuote(id:data!.documentID, quote: data!["quote"] as! String, movie: data!["movie"] as! String,
+            
+                                         author: data!["author"] as! String)
+            
+//            decide we can edit or not.
+            if(AuthManager.shared.currentUser!.uid==self.movieQuote?.author){
+                self.navigationItem.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.showEditQuoteDialog) )
+            }else{
+                self.navigationItem.rightBarButtonItem=nil
+            }
+            
             self.updateView()
         }
     }
@@ -74,8 +84,19 @@ class DetailViewController: UIViewController {
 //            let s = MovieQuote(quote:quoteTextField.text!, movie: movieTextField.text!)
 //            self.movieQuote.quote=quoteTextField.text!
 //            self.movieQuote.movie=movieTextField.text!
+            
+            
             self.movieQuoteRef.updateData(["quote":quoteTextField.text!,
-                                          "movie":movieTextField.text!])
+                                           "movie":movieTextField.text!,
+                                           "created": Timestamp.init()
+                                          ]){
+                err in
+                if let err=err{
+                    print("Error updating document \(err)")
+                }else{
+                    print("updated success")
+                }
+            }
             self.updateView()
         }
         
