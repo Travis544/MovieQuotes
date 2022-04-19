@@ -20,15 +20,17 @@ class MovieQuotesTableViewController: UITableViewController {
     let names=["Travis", "Dave", "JOHN", "s", "TE", "ll"]
     var movieQuoteRef : CollectionReference!
     var quoteListener : ListenerRegistration!
+    var isShowingAllQuotes=true
     var movieQuotes : [MovieQuote] = [MovieQuote]()
-    
+    var logOutHandle : AuthStateDidChangeListenerHandle?
 
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        quoteListener.remove()
+        stopListening()
+        AuthManager.shared.removeObserver(logOutHandle)
     }
     
     override func viewWillAppear(_ animated:Bool){
@@ -36,30 +38,65 @@ class MovieQuotesTableViewController: UITableViewController {
         
         super.viewWillAppear(animated)
         
-        if (AuthManager.shared.isSignedIn){
-            print("User is already signed in")
-        }else{
-            print("No user so signing in anonymously")
-            AuthManager.shared.signInAnonymously()
-        }
+//        if (AuthManager.shared.isSignedIn){
+//            print("User is already signed in")
+//        }else{
+//            print("No user so signing in anonymously")
+//            AuthManager.shared.signInAnonymously()
+//        }
 //
         
+        if(!AuthManager.shared.isSignedIn){
+            
+        }
+        
 //        tableView.reloadData()
-        quoteListener=movieQuoteRef.order(by: "created", descending:true).limit(to: 50).addSnapshotListener{ [self](querySnapshot, error) in
+        self.startListening(filterByAuthor: nil) {
+            self.tableView.reloadData()
+        }
+        
+        logOutHandle = AuthManager.shared.addLogoutObserver {
+            print("Someone signed out, Go back to the loginViewController")
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        
+    }
+    
+    
+    func startListening(filterByAuthor authorFilter: String?, changeListener: @escaping (() -> Void)){
+        var query=self.movieQuoteRef.order(by: "created", descending: true).limit(to: 50)
+        if let authorFilter = authorFilter {
+//            filter by this author
+            print("TODO, filter by this author")
+            query=query.whereField("author", isEqualTo: authorFilter)
+            
+        }
+        
+    
+        
+           quoteListener=query.addSnapshotListener{ [self](querySnapshot, error) in
             self.movieQuotes=[]
             if querySnapshot != nil{
                 querySnapshot?.documents.forEach({ QueryDocumentSnapshot in
-                    print(QueryDocumentSnapshot.documentID)
-                    print(QueryDocumentSnapshot.data())
+//                    print(QueryDocumentSnapshot.documentID)
+//                    print(QueryDocumentSnapshot.data())
                     let data=QueryDocumentSnapshot.data()
                     
                     self.movieQuotes.append(MovieQuote(id:QueryDocumentSnapshot.documentID, quote: data["quote"] as! String, movie: data["movie"] as! String,
-                                                       author: AuthManager.shared.currentUser!.uid))
+                                                       author: data["author"] as! String))
                     
                 })
-                self.tableView.reloadData()
+                
+                 changeListener()
+//                self.tableView.reloadData()
             }
         }
+    }
+    
+    
+    func stopListening(){
+        quoteListener.remove()
     }
     
     override func viewDidLoad() {
@@ -72,7 +109,8 @@ class MovieQuotesTableViewController: UITableViewController {
        self.navigationItem.leftBarButtonItem = self.editButtonItem
         
 //        self.navigationItem.rightBarButtonItem
-        self.navigationItem.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddQuoteDialog) )
+//        self.navigationItem.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddQuoteDialog) )
+        self.navigationItem.rightBarButtonItem=UIBarButtonItem(title:"☰", style: .plain, target: self, action: #selector(showMenu))
 //        hard code some movie quote
         // let mq1=MovieQuote(quote: "I will be back", movie: "Terminator")
 //        let mq2=MovieQuote(quote: "Everything is great", movie: "Lego Movie")
@@ -81,6 +119,42 @@ class MovieQuotesTableViewController: UITableViewController {
         movieQuoteRef = Firestore.firestore().collection("MovieQuotes")
         
     }
+    
+    
+    @objc func showMenu(){
+        //TODO: SHOW AN ACTION SHEET
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { action in
+            print("Canceled")
+        }
+        
+        let showAddQuoteDialogAction = UIAlertAction(title: "Add quote", style: UIAlertAction.Style.default) { action in
+            self.showAddQuoteDialog()
+        }
+        
+        let signOutAction=UIAlertAction(title: "Sign out", style: UIAlertAction.Style.default) { action in
+            AuthManager.shared.signOut()
+        }
+        
+        let showMyQuoteAction = UIAlertAction(title: self.isShowingAllQuotes ? "Show only my quotes" : "Show all quotes" , style: UIAlertAction.Style.default) { action in
+            self.stopListening()
+            
+            let filterBy = self.isShowingAllQuotes ? AuthManager.shared.currentUser!.uid : nil
+            self.startListening(filterByAuthor: filterBy) {
+                self.tableView.reloadData()
+            }
+            self.isShowingAllQuotes = !self.isShowingAllQuotes
+        }
+        
+       
+        alertController.addAction(showMyQuoteAction)
+        alertController.addAction(showAddQuoteDialogAction)
+        alertController.addAction(signOutAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    
+    
     
     @objc func showAddQuoteDialog(){
         print("You pressed addd button")
@@ -152,7 +226,14 @@ class MovieQuotesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 //         Return false if you do not want the specified item to be editable.
         let movieQuote=self.movieQuotes[indexPath.row]
-        return AuthManager.shared.currentUser!.uid==movieQuote.author
+//        print("SS")
+//        print(AuthManager.shared.currentUser!.uid==movieQuote.author)
+        if let user=AuthManager.shared.currentUser{
+            return user.uid==movieQuote.author
+        }else{
+            return false
+        }
+       
     }
     
 

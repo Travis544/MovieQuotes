@@ -79,4 +79,14 @@ class AuthManager{
             print("Anonymous sign in complete")
         }
     }
+    
+    
+    func signOut(){
+        do{
+            try Auth.auth().signOut()
+        } catch{
+            print("Sign out failed \(error)")
+        }
+        
+    }
 }

@@ -67,7 +67,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4L-c1-3V5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-600" y="113"/>
+            <point key="canvasLocation" x="-138" y="477"/>
         </scene>
         <!--Menu-->
         <scene sceneID="QKn-WE-JVg">
@@ -143,7 +143,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LO7-mk-zLH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-928" y="811"/>
+            <point key="canvasLocation" x="-1717" y="1034"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="CYz-fa-E6R">
@@ -162,7 +162,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfi-f7-YjL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1993" y="811"/>
+            <point key="canvasLocation" x="-2175" y="1010"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tIf-uU-fuw">
@@ -173,7 +173,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="4YM-Ii-vwU" kind="relationship" relationship="rootViewController" id="KQS-s3-eV6"/>
+                        <segue destination="WCJ-AJ-ZWJ" kind="relationship" relationship="rootViewController" id="VSo-hP-Mci"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nkg-EG-3Ys" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -234,10 +234,89 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="saJ-xQ-0oZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="271" y="120"/>
+            <point key="canvasLocation" x="791" y="520"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="4oM-f5-opX">
+            <objects>
+                <viewController id="WCJ-AJ-ZWJ" customClass="LoginViewController" customModule="MovieQuotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Id4-kc-M0U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="MiM-BE-gii">
+                                <rect key="frame" x="20" y="120" width="374" height="140"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVY-Rk-x2k">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zMF-KN-ISX">
+                                        <rect key="frame" x="0.0" y="20.5" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUB-IS-fhr">
+                                        <rect key="frame" x="0.0" y="54.5" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="THR-ss-SVe">
+                                        <rect key="frame" x="0.0" y="75" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="TL2-xw-0x1">
+                                        <rect key="frame" x="0.0" y="109" width="374" height="31"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adN-jF-gPB">
+                                                <rect key="frame" x="0.0" y="0.0" width="156.5" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Log in Existing User"/>
+                                                <connections>
+                                                    <action selector="pressedLoginExistingUser:" destination="WCJ-AJ-ZWJ" eventType="touchUpInside" id="djG-2h-D70"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4e-VS-0MK">
+                                                <rect key="frame" x="217.5" y="0.0" width="156.5" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Create user"/>
+                                                <connections>
+                                                    <action selector="pressedNewUser:" destination="WCJ-AJ-ZWJ" eventType="touchUpInside" id="l02-Fm-mWX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yTC-rz-jKD"/>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                        <constraints>
+                            <constraint firstItem="MiM-BE-gii" firstAttribute="leading" secondItem="yTC-rz-jKD" secondAttribute="leading" constant="20" id="5Qs-PP-HfA"/>
+                            <constraint firstItem="yTC-rz-jKD" firstAttribute="trailing" secondItem="MiM-BE-gii" secondAttribute="trailing" constant="20" id="T4N-3U-jdk"/>
+                            <constraint firstItem="MiM-BE-gii" firstAttribute="top" secondItem="yTC-rz-jKD" secondAttribute="top" constant="32" id="vIt-Br-6IK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DFK-AD-jOF"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="zMF-KN-ISX" id="UZG-2S-yG1"/>
+                        <outlet property="passwordTextField" destination="THR-ss-SVe" id="Hzn-Re-WNc"/>
+                        <segue destination="4YM-Ii-vwU" kind="show" identifier="showListSegue" id="D7Z-8K-cXT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5j-AN-baf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-236.23188405797103" y="-228.34821428571428"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

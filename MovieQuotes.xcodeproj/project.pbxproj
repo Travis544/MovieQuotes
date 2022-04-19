@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09A82CF131A8BCA7CC6079A1 /* Pods_MovieQuotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5097F8A851D3AD24EEC963 /* Pods_MovieQuotes.framework */; };
+		1F31502A280D9D06000DB69C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F315029280D9D06000DB69C /* LoginViewController.swift */; };
 		1F61E010280373B10056324D /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61E00F280373B10056324D /* AuthManager.swift */; };
 		1FB5669A27F1DD890075E752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5669927F1DD890075E752 /* AppDelegate.swift */; };
 		1FB5669C27F1DD890075E752 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5669B27F1DD890075E752 /* SceneDelegate.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		15975E3E6214D877F7AE2418 /* Pods-MovieQuotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieQuotes.debug.xcconfig"; path = "Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes.debug.xcconfig"; sourceTree = "<group>"; };
+		1F315029280D9D06000DB69C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1F61E00F280373B10056324D /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		1FB5669627F1DD890075E752 /* MovieQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB5669927F1DD890075E752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		1FB5669827F1DD890075E752 /* MovieQuotes */ = {
 			isa = PBXGroup;
 			children = (
+				1F315029280D9D06000DB69C /* LoginViewController.swift */,
 				1FB566CF27F5D82F0075E752 /* GoogleService-Info.plist */,
 				1FB5669927F1DD890075E752 /* AppDelegate.swift */,
 				1FB5669B27F1DD890075E752 /* SceneDelegate.swift */,
@@ -419,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F31502A280D9D06000DB69C /* LoginViewController.swift in Sources */,
 				1FB5669A27F1DD890075E752 /* AppDelegate.swift in Sources */,
 				1F61E010280373B10056324D /* AuthManager.swift in Sources */,
 				1FB566CC27F1E5940075E752 /* MovieQuote.swift in Sources */,
