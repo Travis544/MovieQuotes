@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/yuanhang/Desktop/MovieQuotes2/MovieQuotes/MovieQuotes/SideNavViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:MovieQuotes.xcodeproj">
    </FileRef>
    <FileRef

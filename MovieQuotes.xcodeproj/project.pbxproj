@@ -10,6 +10,9 @@
 		09A82CF131A8BCA7CC6079A1 /* Pods_MovieQuotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5097F8A851D3AD24EEC963 /* Pods_MovieQuotes.framework */; };
 		1F31502A280D9D06000DB69C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F315029280D9D06000DB69C /* LoginViewController.swift */; };
 		1F61E010280373B10056324D /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61E00F280373B10056324D /* AuthManager.swift */; };
+		1F70454A2811834000155D24 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 1F7045492811834000155D24 /* SideMenu */; };
+		1F70454C2811842200155D24 /* SideNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70454B2811842200155D24 /* SideNavViewController.swift */; };
+		1F7045522811918B00155D24 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7045512811918B00155D24 /* ProfilePageViewController.swift */; };
 		1FB5669A27F1DD890075E752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5669927F1DD890075E752 /* AppDelegate.swift */; };
 		1FB5669C27F1DD890075E752 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5669B27F1DD890075E752 /* SceneDelegate.swift */; };
 		1FB566A127F1DD890075E752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB5669F27F1DD890075E752 /* Main.storyboard */; };
@@ -22,6 +25,9 @@
 		1FB566CC27F1E5940075E752 /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB566CB27F1E5940075E752 /* MovieQuote.swift */; };
 		1FB566CE27F334330075E752 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB566CD27F334330075E752 /* DetailViewController.swift */; };
 		1FB566D027F5D82F0075E752 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FB566CF27F5D82F0075E752 /* GoogleService-Info.plist */; };
+		1FB8178D280EE31300270B27 /* RoseFire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB8178C280EE31300270B27 /* RoseFire.swift */; };
+		1FB8178F280EE5D900270B27 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB8178E280EE5D900270B27 /* constants.swift */; };
+		1FB81792280EEC7D00270B27 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1FB81791280EEC7D00270B27 /* GoogleSignIn */; };
 		3CC03306A950566DC8C01A4D /* Pods_MovieQuotesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4736B537F710646707F080F1 /* Pods_MovieQuotesTests.framework */; };
 		99B1F8623321C0C96C1CBB32 /* Pods_MovieQuotes_MovieQuotesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2C0643CC94D55034A003E0 /* Pods_MovieQuotes_MovieQuotesUITests.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +53,8 @@
 		15975E3E6214D877F7AE2418 /* Pods-MovieQuotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieQuotes.debug.xcconfig"; path = "Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes.debug.xcconfig"; sourceTree = "<group>"; };
 		1F315029280D9D06000DB69C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1F61E00F280373B10056324D /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		1F70454B2811842200155D24 /* SideNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SideNavViewController.swift; path = /Users/yuanhang/Desktop/MovieQuotes2/MovieQuotes/MovieQuotes/SideNavViewController.swift; sourceTree = "<absolute>"; };
+		1F7045512811918B00155D24 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		1FB5669627F1DD890075E752 /* MovieQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB5669927F1DD890075E752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FB5669B27F1DD890075E752 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +71,8 @@
 		1FB566CB27F1E5940075E752 /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
 		1FB566CD27F334330075E752 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1FB566CF27F5D82F0075E752 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1FB8178C280EE31300270B27 /* RoseFire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoseFire.swift; sourceTree = "<group>"; };
+		1FB8178E280EE5D900270B27 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		3A5097F8A851D3AD24EEC963 /* Pods_MovieQuotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieQuotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8CC4D2DA179C9691090A66 /* Pods-MovieQuotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieQuotes.release.xcconfig"; path = "Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes.release.xcconfig"; sourceTree = "<group>"; };
 		3DA120FA30D1A9B70FA69A7D /* Pods-MovieQuotesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieQuotesTests.release.xcconfig"; path = "Target Support Files/Pods-MovieQuotesTests/Pods-MovieQuotesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +89,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A82CF131A8BCA7CC6079A1 /* Pods_MovieQuotes.framework in Frameworks */,
+				1F70454A2811834000155D24 /* SideMenu in Frameworks */,
+				1FB81792280EEC7D00270B27 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +151,9 @@
 		1FB5669827F1DD890075E752 /* MovieQuotes */ = {
 			isa = PBXGroup;
 			children = (
+				1F70454B2811842200155D24 /* SideNavViewController.swift */,
+				1FB8178C280EE31300270B27 /* RoseFire.swift */,
+				1FB8178E280EE5D900270B27 /* constants.swift */,
 				1F315029280D9D06000DB69C /* LoginViewController.swift */,
 				1FB566CF27F5D82F0075E752 /* GoogleService-Info.plist */,
 				1FB5669927F1DD890075E752 /* AppDelegate.swift */,
@@ -151,6 +166,7 @@
 				1FB566A427F1DD8A0075E752 /* LaunchScreen.storyboard */,
 				1FB566A727F1DD8A0075E752 /* Info.plist */,
 				1FB566CD27F334330075E752 /* DetailViewController.swift */,
+				1F7045512811918B00155D24 /* ProfilePageViewController.swift */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -200,6 +216,10 @@
 			dependencies = (
 			);
 			name = MovieQuotes;
+			packageProductDependencies = (
+				1FB81791280EEC7D00270B27 /* GoogleSignIn */,
+				1F7045492811834000155D24 /* SideMenu */,
+			);
 			productName = MovieQuotes;
 			productReference = 1FB5669627F1DD890075E752 /* MovieQuotes.app */;
 			productType = "com.apple.product-type.application";
@@ -275,6 +295,10 @@
 				Base,
 			);
 			mainGroup = 1FB5668D27F1DD890075E752;
+			packageReferences = (
+				1FB81790280EEC7D00270B27 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				1F7045482811834000155D24 /* XCRemoteSwiftPackageReference "SideMenu" */,
+			);
 			productRefGroup = 1FB5669727F1DD890075E752 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -422,11 +446,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB8178D280EE31300270B27 /* RoseFire.swift in Sources */,
 				1F31502A280D9D06000DB69C /* LoginViewController.swift in Sources */,
+				1FB8178F280EE5D900270B27 /* constants.swift in Sources */,
 				1FB5669A27F1DD890075E752 /* AppDelegate.swift in Sources */,
+				1F7045522811918B00155D24 /* ProfilePageViewController.swift in Sources */,
 				1F61E010280373B10056324D /* AuthManager.swift in Sources */,
 				1FB566CC27F1E5940075E752 /* MovieQuote.swift in Sources */,
 				1FB566CE27F334330075E752 /* DetailViewController.swift in Sources */,
+				1F70454C2811842200155D24 /* SideNavViewController.swift in Sources */,
 				1FB566CA27F1E0000075E752 /* MovieQuotesTableViewController.swift in Sources */,
 				1FB5669C27F1DD890075E752 /* SceneDelegate.swift in Sources */,
 			);
@@ -772,6 +800,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1F7045482811834000155D24 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		1FB81790280EEC7D00270B27 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1F7045492811834000155D24 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F7045482811834000155D24 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
+		1FB81791280EEC7D00270B27 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FB81790280EEC7D00270B27 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1FB5668E27F1DD890075E752 /* Project object */;
 }

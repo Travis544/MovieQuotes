@@ -7,7 +7,8 @@
 
 import UIKit
 import Firebase
-
+import FirebaseCore
+import GoogleSignIn
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
@@ -20,6 +21,51 @@ class LoginViewController: UIViewController {
         
     }
 
+    @IBAction func pressedRoseFire(_ sender: Any) {
+//        should be your view controller
+        Rosefire.sharedDelegate().uiDelegate=self
+        Rosefire.sharedDelegate().signIn(registryToken: RoseFireRegistraryToken) { error, result in
+            if let error = error{
+                print("error signing in \(error)")
+                return
+            }
+            
+            AuthManager.shared.signInWithRosefireToken(result!.token)
+        
+        }
+    }
+    
+    @IBAction func pressedGoogleSignIn(_ sender: Any) {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
+
+          if let error = error {
+            // ...
+            print("error occured signing in with google \(error)")
+            return
+          }
+
+          guard
+            let authentication = user?.authentication,
+            let idToken = authentication.idToken
+          else {
+            return
+          }
+
+          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                         accessToken: authentication.accessToken)
+            
+            print("Google signed in worked, now use the credential to do the real firebase sign in")
+            AuthManager.shared.signInWithGoogleCredential(credential)
+          // ...
+        }
+    }
+    
     @IBAction func pressedNewUser(_ sender: Any) {
         let email = emailTextField.text!
         let password=passwordTextField.text!

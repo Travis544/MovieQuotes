@@ -68,7 +68,7 @@ class MovieQuotesTableViewController: UITableViewController {
         var query=self.movieQuoteRef.order(by: "created", descending: true).limit(to: 50)
         if let authorFilter = authorFilter {
 //            filter by this author
-            print("TODO, filter by this author")
+            print("TODO, filter by this author \(authorFilter)")
             query=query.whereField("author", isEqualTo: authorFilter)
             
         }
@@ -89,7 +89,8 @@ class MovieQuotesTableViewController: UITableViewController {
                 })
                 
                  changeListener()
-//                self.tableView.reloadData()
+                print(movieQuotes)
+               self.tableView.reloadData()
             }
         }
     }
@@ -106,11 +107,12 @@ class MovieQuotesTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-       self.navigationItem.leftBarButtonItem = self.editButtonItem
+      // self.navigationItem.leftBarButtonItem = self.editButtonItem
         
 //        self.navigationItem.rightBarButtonItem
-//        self.navigationItem.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddQuoteDialog) )
-        self.navigationItem.rightBarButtonItem=UIBarButtonItem(title:"☰", style: .plain, target: self, action: #selector(showMenu))
+
+        self.navigationItem.rightBarButtonItem=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddQuoteDialog) )
+       // self.navigationItem.rightBarButtonItem=UIBarButtonItem(title:"☰", style: .plain, target: self, action: #selector(showMenu))
 //        hard code some movie quote
         // let mq1=MovieQuote(quote: "I will be back", movie: "Terminator")
 //        let mq2=MovieQuote(quote: "Everything is great", movie: "Lego Movie")

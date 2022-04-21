@@ -9,6 +9,7 @@ import Foundation
 
 import Firebase
 import FirebaseAuth
+import GoogleSignIn
 
 class AuthManager{
     static let shared = AuthManager()
@@ -69,6 +70,23 @@ class AuthManager{
         }
     }
     
+    func signInWithRosefireToken(_ rosefireToken: String){
+        Auth.auth().signIn(withCustomToken: rosefireToken) { authResult
+            , error in
+            if let error=error{
+                print("error signing in \(error)")
+                return
+            }
+            
+        
+        }
+    }
+    
+    func signInWithGoogleCredential(_ googleCredential : AuthCredential){
+        Auth.auth().signIn(with: googleCredential) { auth, error in
+            print("GOOGLE SIGNED IN WITH FIREBASE")
+        }
+    }
     
     func signInAnonymously(){
         Auth.auth().signInAnonymously() {authResult, error in
