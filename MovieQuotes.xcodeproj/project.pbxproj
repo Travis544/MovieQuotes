@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		09A82CF131A8BCA7CC6079A1 /* Pods_MovieQuotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5097F8A851D3AD24EEC963 /* Pods_MovieQuotes.framework */; };
 		1F31502A280D9D06000DB69C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F315029280D9D06000DB69C /* LoginViewController.swift */; };
+		1F4048CE2816C81F00734F1D /* UserDocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4048CD2816C81F00734F1D /* UserDocumentManager.swift */; };
+		1F4048D02816D35F00734F1D /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4048CF2816D35F00734F1D /* ImageUtils.swift */; };
+		1F4048D32816DCCB00734F1D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1F4048D22816DCCB00734F1D /* Kingfisher */; };
 		1F61E010280373B10056324D /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61E00F280373B10056324D /* AuthManager.swift */; };
 		1F70454A2811834000155D24 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 1F7045492811834000155D24 /* SideMenu */; };
 		1F70454C2811842200155D24 /* SideNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70454B2811842200155D24 /* SideNavViewController.swift */; };
@@ -52,6 +55,8 @@
 /* Begin PBXFileReference section */
 		15975E3E6214D877F7AE2418 /* Pods-MovieQuotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieQuotes.debug.xcconfig"; path = "Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes.debug.xcconfig"; sourceTree = "<group>"; };
 		1F315029280D9D06000DB69C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1F4048CD2816C81F00734F1D /* UserDocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocumentManager.swift; sourceTree = "<group>"; };
+		1F4048CF2816D35F00734F1D /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		1F61E00F280373B10056324D /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		1F70454B2811842200155D24 /* SideNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SideNavViewController.swift; path = /Users/yuanhang/Desktop/MovieQuotes2/MovieQuotes/MovieQuotes/SideNavViewController.swift; sourceTree = "<absolute>"; };
 		1F7045512811918B00155D24 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F4048D32816DCCB00734F1D /* Kingfisher in Frameworks */,
 				09A82CF131A8BCA7CC6079A1 /* Pods_MovieQuotes.framework in Frameworks */,
 				1F70454A2811834000155D24 /* SideMenu in Frameworks */,
 				1FB81792280EEC7D00270B27 /* GoogleSignIn in Frameworks */,
@@ -167,6 +173,8 @@
 				1FB566A727F1DD8A0075E752 /* Info.plist */,
 				1FB566CD27F334330075E752 /* DetailViewController.swift */,
 				1F7045512811918B00155D24 /* ProfilePageViewController.swift */,
+				1F4048CD2816C81F00734F1D /* UserDocumentManager.swift */,
+				1F4048CF2816D35F00734F1D /* ImageUtils.swift */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -219,6 +227,7 @@
 			packageProductDependencies = (
 				1FB81791280EEC7D00270B27 /* GoogleSignIn */,
 				1F7045492811834000155D24 /* SideMenu */,
+				1F4048D22816DCCB00734F1D /* Kingfisher */,
 			);
 			productName = MovieQuotes;
 			productReference = 1FB5669627F1DD890075E752 /* MovieQuotes.app */;
@@ -298,6 +307,7 @@
 			packageReferences = (
 				1FB81790280EEC7D00270B27 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				1F7045482811834000155D24 /* XCRemoteSwiftPackageReference "SideMenu" */,
+				1F4048D12816DCCB00734F1D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 1FB5669727F1DD890075E752 /* Products */;
 			projectDirPath = "";
@@ -447,9 +457,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FB8178D280EE31300270B27 /* RoseFire.swift in Sources */,
+				1F4048CE2816C81F00734F1D /* UserDocumentManager.swift in Sources */,
 				1F31502A280D9D06000DB69C /* LoginViewController.swift in Sources */,
 				1FB8178F280EE5D900270B27 /* constants.swift in Sources */,
 				1FB5669A27F1DD890075E752 /* AppDelegate.swift in Sources */,
+				1F4048D02816D35F00734F1D /* ImageUtils.swift in Sources */,
 				1F7045522811918B00155D24 /* ProfilePageViewController.swift in Sources */,
 				1F61E010280373B10056324D /* AuthManager.swift in Sources */,
 				1FB566CC27F1E5940075E752 /* MovieQuote.swift in Sources */,
@@ -802,6 +814,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1F4048D12816DCCB00734F1D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		1F7045482811834000155D24 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jonkykong/SideMenu";
@@ -821,6 +841,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1F4048D22816DCCB00734F1D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F4048D12816DCCB00734F1D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		1F7045492811834000155D24 /* SideMenu */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1F7045482811834000155D24 /* XCRemoteSwiftPackageReference "SideMenu" */;

@@ -14,6 +14,11 @@ class SideNavViewController: UIViewController {
         return navController.viewControllers.last as? MovieQuotesTableViewController
     }
 
+    @IBAction func pressedSignedOut(_ sender: Any) {
+        dismiss(animated: true)
+        
+        AuthManager.shared.signOut()
+    }
     
     
     @IBAction func pressedDeleteQuote(_ sender: Any) {
@@ -24,12 +29,24 @@ class SideNavViewController: UIViewController {
     }
     @IBAction func pressedEditProfile(_ sender: Any) {
         tableViewController.performSegue(withIdentifier: kProfilePageSegue, sender: tableViewController)
+        dismiss(animated: true)
         
     }
     
-    @IBAction func pressedShowMyQuotes(_ sender: Any) {
+    @IBAction func pressedShowAllQuotes(_ sender: Any) {
         tableViewController.isShowingAllQuotes=true
-        //tableViewController.stopListening()
+        tableViewController.stopListening()
+        tableViewController.startListening(filterByAuthor: nil){
+            
+        }
+        dismiss(animated: true)
+        
+    }
+    
+    
+    @IBAction func pressedShowMyQuotes(_ sender: Any) {
+        tableViewController.isShowingAllQuotes=false
+        tableViewController.stopListening()
         tableViewController.startListening(filterByAuthor: AuthManager.shared.currentUser?.uid){
             
         }

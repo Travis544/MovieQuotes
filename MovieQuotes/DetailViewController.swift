@@ -14,9 +14,17 @@ class DetailViewController: UIViewController {
     var movieQuoteRef: DocumentReference!
     var movieQuote : MovieQuote!
     var movieQuoteListener: ListenerRegistration!
+    var userListenerRegistration : ListenerRegistration?
+    var imageUtil = ImageUtils()
+    @IBOutlet weak var authorBoxStackView: UIStackView!
+    
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var authorProfileImageView: UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        self.authorBoxStackView.isHidden=true
+        
         // Do any additional setup after loading the view.
 //        updateView()
     }
@@ -48,8 +56,29 @@ class DetailViewController: UIViewController {
                 self.navigationItem.rightBarButtonItem=nil
             }
             
-            self.updateView()
+            if let authorUid = self.movieQuote.author{
+                self.movieQuoteListener.remove()
+                self.userListenerRegistration=UserDocumentManager.shared.startListening(for: authorUid, changeListener: {
+                    self.updateView()
+                    self.updateAuthorBox()
+                })
+                
+                self.updateView()
+            }
+            
+            
         }
+    }
+    
+    
+    func updateAuthorBox(){
+        self.authorBoxStackView.isHidden=UserDocumentManager.shared.name.isEmpty || UserDocumentManager.shared.photoUrl.isEmpty
+        authorLabel.text=UserDocumentManager.shared.name
+        if !UserDocumentManager.shared.photoUrl.isEmpty{
+            imageUtil.load(imageView: authorProfileImageView, from: UserDocumentManager.shared.photoUrl)
+        }
+        print("TO DO, update the author box with \(UserDocumentManager.shared.name)")
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
