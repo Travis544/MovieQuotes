@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var loginHandle : AuthStateDidChangeListenerHandle!
+    var rosefireName : String?
     @IBAction func pressedLoginExistingUser(_ sender: Any) {
         let email = emailTextField.text!
         let password=passwordTextField.text!
@@ -30,6 +31,7 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            self.rosefireName=result!.name
             AuthManager.shared.signInWithRosefireToken(result!.token)
         
         }
@@ -83,6 +85,7 @@ class LoginViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        rosefireName=nil
         super.viewWillAppear(animated)
         loginHandle=AuthManager.shared.addLoginObserver {
             self.performSegue(withIdentifier: "showListSegue", sender: self)
@@ -102,14 +105,21 @@ class LoginViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+      
+//        make sure that the segue identifier is correct.
+        if segue.identifier == kShowListSegue{
+            print("WORKS")
+            print("Name= \(rosefireName ?? AuthManager.shared.currentUser!.displayName)")
+            print("Photourl=\(AuthManager.shared.currentUser!.photoURL)")
+            
+            UserDocumentManager.shared.addNewUserMaybe(uid: AuthManager.shared.currentUser!.uid, name: (rosefireName ?? AuthManager.shared.currentUser!.displayName)  , photoUrl: AuthManager.shared.currentUser!.photoURL?.absoluteString ?? "")
+        }
     }
-    */
+    
 
 }

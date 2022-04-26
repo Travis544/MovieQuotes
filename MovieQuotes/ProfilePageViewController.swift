@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestore
 
-class ProfilePageViewController: UIViewController {
+class ProfilePageViewController: UIViewController{
 
     @IBOutlet weak var profilePhotoImageView: UIImageView!
     @IBOutlet weak var displayNameTextField: UITextField!
@@ -28,6 +28,24 @@ class ProfilePageViewController: UIViewController {
     }
     
     
+    @IBAction func displayNameDidChange(_ sender: Any) {
+        print("TO DO: Update name to \(displayNameTextField.text)")
+        UserDocumentManager.shared.updateName(name: displayNameTextField.text ?? "")
+    }
+    
+    @IBAction func pressedChangePhoto(_ sender: Any) {
+        print("CHANGE PHOTO")
+        let imagePicker=UIImagePickerController()
+        imagePicker.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera){
+            imagePicker.sourceType = .camera
+            
+        }else{
+            imagePicker.sourceType = .photoLibrary
+        }
+        present(imagePicker, animated: true)
+    }
+    
     
     func updateView(){
         print("TODO: SHow the name \(UserDocumentManager.shared.name)")
@@ -37,6 +55,8 @@ class ProfilePageViewController: UIViewController {
         if !UserDocumentManager.shared.photoUrl.isEmpty{
         imageUtil.load(imageView: profilePhotoImageView, from: UserDocumentManager.shared.photoUrl)
         }
+        
+        
     }
     
     
@@ -57,4 +77,25 @@ class ProfilePageViewController: UIViewController {
     }
     */
 
+}
+
+
+
+extension ProfilePageViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+  
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage? {
+            profilePhotoImageView.image=image
+            StorageManager.shared.uploadProfilePhoto(uid: AuthManager.shared.currentUser!.uid, image: image)
+        }
+        
+        picker.dismiss(animated: true)
+    }
+    
+    
 }

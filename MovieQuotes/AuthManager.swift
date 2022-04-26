@@ -13,6 +13,7 @@ import GoogleSignIn
 
 class AuthManager{
     static let shared = AuthManager()
+    
     public init(){
         
     }

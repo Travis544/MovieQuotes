@@ -171,6 +171,9 @@
                                 <rect key="frame" x="20" y="153.5" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="displayNameDidChange:" destination="lWm-Na-v8K" eventType="editingChanged" id="XiD-jK-CEC"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWK-RF-zs7">
                                 <rect key="frame" x="103" y="243.5" width="98" height="20.5"/>
@@ -189,6 +192,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Change Profile Photo">
                                     <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="pressedChangePhoto:" destination="lWm-Na-v8K" eventType="touchUpInside" id="kKz-Zx-fZP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aaf-5t-LfE"/>
